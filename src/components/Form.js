@@ -53,6 +53,26 @@ class Form extends React.Component {
               data-testid="save-button"
             />
           </label>
+
+          <label htmlFor="trunfo-input">
+            <input
+              type="checkBox"
+              data-testid="trunfo-input"
+            />
+          </label>
+
+          <label htmlFor="rare-input">
+            <input
+              type="select"
+            //   data-testid="rare-input"
+            />
+            <select data-testid="rare-input">
+              <option value="normal">normal</option>
+              <option value="raro">raro</option>
+              <option value="muito raro">muito raro</option>
+            </select>
+          </label>
+
         </form>
       </div>
     );
