@@ -1,14 +1,52 @@
 import React from 'react';
-import Cards from './components/Cards';
+import Card from './components/Card';
 import Form from './components/Form';
 // import card from './components/Cards';
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
+      cardImage: '',
+      cardRare: '',
+      cardTrunfo: false,
+    };
+    // console.log();
+  }
+
   render() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    } = this.state;
     return (
       <>
         <Form />
-        <Cards />
+        <Card
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardTrunfo={ cardTrunfo }
+          // hasTrunfo={ hasTrunfo }
+          // isSaveButtonDisabled={ isSaveButtonDisabled }
+          // onInputChange={ this.handleInputChange }
+          // onSaveButtonClick={ this.saveCard }
+        />
       </>
     );
   }

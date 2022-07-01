@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-class Cards extends React.Component {
+class Card extends React.Component {
   render() {
     const {
       cardName,
@@ -11,7 +11,7 @@ class Cards extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
-      // cardTrunfo
+      cardTrunfo,
     } = this.props;
     return (
       <>
@@ -36,13 +36,16 @@ class Cards extends React.Component {
         <p data-testid="rare-card">
           { cardRare }
         </p>
+        <p data-testid="trunfo-card">
+          { cardTrunfo }
+        </p>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />
       </>
     );
   }
 }
 
-Cards.propTypes = {
+Card.propTypes = {
   cardName: propTypes.string.isRequired,
   cardDescription: propTypes.string.isRequired,
   cardAttr1: propTypes.string.isRequired,
@@ -50,6 +53,6 @@ Cards.propTypes = {
   cardAttr3: propTypes.string.isRequired,
   cardImage: propTypes.string.isRequired,
   cardRare: propTypes.string.isRequired,
-  // cardTrunfo: propTypes.bool.isRequired,
+  cardTrunfo: propTypes.bool.isRequired,
 };
-export default Cards;
+export default Card;

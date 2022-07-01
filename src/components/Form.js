@@ -74,14 +74,6 @@ class Form extends React.Component {
             />
           </label>
 
-          {/* <label htmlFor="save-button">
-            <input
-              type="button"
-              data-testid="save-button"
-              onChange={ onInputChange }
-            />
-          </label> */}
-
           <label htmlFor="trunfo-input">
             Super Trunfo
             <input
@@ -92,11 +84,6 @@ class Form extends React.Component {
             />
           </label>
 
-          {/* <label htmlFor="rare-input">
-            <input
-              type="select"
-              //   data-testid="rare-input
-            /> */}
           <select
             data-testid="rare-input"
             onChange={ onInputChange }
@@ -106,7 +93,6 @@ class Form extends React.Component {
             <option value="raro">raro</option>
             <option value="muito raro">muito raro</option>
           </select>
-          {/* </label> */}
           <button
             type="button"
             data-testid="save-button"
