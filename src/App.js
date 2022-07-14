@@ -19,7 +19,7 @@ class App extends React.Component {
   }
 
   // lindar alteraçao dos inputs
- handlerChange =(event) => {
+ onInputChange =(event) => {
    const { name, value, type, checked } = event.target;
    const values = type === 'checkbox' ? checked : value;
    this.setState({
@@ -31,6 +31,8 @@ class App extends React.Component {
    const maxValue = 90;
    return (Number(attr) < 0 || Number(attr) > maxValue);
  }
+
+ // codigo construido com ajuda do aluno Marcelo Marques da 22B
 
  isSaveButtonDisabled = () => {
    // Será validado se o botão salvar está desabilitado se o campo de atributo for maior que 90 e menor que 0.
@@ -68,7 +70,7 @@ class App extends React.Component {
    return (
      <>
        <Form
-         onChange={ this.handlerChange }
+         onInputChange={ this.onInputChange }
          cardName={ cardName }
          cardDescription={ cardDescription }
          cardAttr1={ cardAttr1 }
