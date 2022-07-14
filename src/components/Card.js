@@ -18,6 +18,7 @@ class Card extends React.Component {
         <h3 data-testid="name-card">
           { cardName }
         </h3>
+        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
         <p data-testid="description-card">
           { cardDescription }
         </p>
@@ -33,7 +34,6 @@ class Card extends React.Component {
         <p data-testid="rare-card">
           { cardRare }
         </p>
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
         { cardTrunfo && <p data-testid="trunfo-card"> Super Trunfo </p>}
       </>
     );
