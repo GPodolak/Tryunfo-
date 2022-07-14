@@ -15,10 +15,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      // isSaveButtonDisabled: true,
     };
-    // this.state;
-    // console.log();
   }
 
   // lindar alteraçao dos inputs
@@ -30,20 +27,33 @@ class App extends React.Component {
    });
  }
 
+ validateAttr = (attr) => {
+   const maxValue = 90;
+   return (Number(attr) < 0 || Number(attr) > maxValue);
+ }
+
  isSaveButtonDisabled = () => {
+   // Será validado se o botão salvar está desabilitado se o campo de atributo for maior que 90 e menor que 0.
+   const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
+   const attrValue = this.validateAttr(cardAttr1)
+    || this.validateAttr(cardAttr2)
+    || this.validateAttr(cardAttr3);
+
+   //  Será validado se o botão salvar está desabilitado se a somatória dos campos de atributos for maior que 210.
    const totalAttr = 210;
-   const attrMax = 90;
-   const attrCard = [cardAttr1, cardAttr2, cardAttr3];
-   const emptyCard = [cardName, cardDescription, cardImage, cardRare];
-   const maxCardAttr = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
-   const whithoutContent = emptyCard.every((element) => element);
-   const withoutMax = attrCard.every((attr) => attr >= 0 && attr <= attrMax);
-   const checkedForm = whithoutContent && withoutMax && totalAttr <= maxCardAttr;
-   console.log(checkedForm);
+   const maxAtt = (Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3)) > totalAttr;
+
+   //  Será validado se o botão salvar está desabilitado se o campo estiver vazio.
+   const { cardName, cardDescription, cardImage, cardRare } = this.state;
+   const emptyCard = cardName === ''
+    || cardDescription === ''
+    || cardImage === ''
+    || cardRare === '';
+   // valida se as constantes acima são true or false;
+   return (emptyCard || maxAtt || attrValue);
  }
 
  render() {
-   console.log(this.isSaveButtonDisabled());
    const {
      cardName,
      cardDescription,
@@ -53,7 +63,6 @@ class App extends React.Component {
      cardImage,
      cardRare,
      cardTrunfo,
-     //  isSaveButtonDisabled,
    } = this.state;
 
    return (
@@ -68,6 +77,7 @@ class App extends React.Component {
          cardImage={ cardImage }
          cardRare={ cardRare }
          cardTrunfo={ cardTrunfo }
+         isSaveButtonDisabled={ this.isSaveButtonDisabled() }
        />
        <Card
          cardName={ cardName }
@@ -79,13 +89,11 @@ class App extends React.Component {
          cardAttr3={ cardAttr3 }
          cardTrunfo={ cardTrunfo }
          // hasTrunfo={ hasTrunfo }
-         // isSaveButtonDisabled={ isSaveButtonDisabled }
-         // onInputChange={ this.handleInputChange }
          // onSaveButtonClick={ this.saveCard }
        />
      </>
    );
  }
-  // this.setState({ isSaveButtonDisabled: !checkedForm });
+//  this.setState({ isSaveButtonDisabled: !checkedForm });
 }
 export default App;
