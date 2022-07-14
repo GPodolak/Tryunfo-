@@ -125,7 +125,7 @@ Form.propTypes = {
   cardTrunfo: propTypes.bool.isRequired,
   // hasTrunfo: propTypes.bool.isRequired,
   isSaveButtonDisabled: propTypes.bool.isRequired,
-  onChange: propTypes.func.isRequired,
+  onInputChange: propTypes.func.isRequired,
   onSaveButtonClick: propTypes.func.isRequired,
 };
 
