@@ -105,6 +105,7 @@ class App extends React.Component {
      cardImage,
      cardRare,
      cardTrunfo,
+     hasTrunfo,
    } = this.state;
 
    return (
@@ -119,6 +120,7 @@ class App extends React.Component {
          cardImage={ cardImage }
          cardRare={ cardRare }
          cardTrunfo={ cardTrunfo }
+         hasTrunfo={ hasTrunfo }
          isSaveButtonDisabled={ this.isSaveButtonDisabled() }
          onSaveButtonClick={ this.savingCard }
        />
