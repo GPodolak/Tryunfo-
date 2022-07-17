@@ -95,6 +95,16 @@ class App extends React.Component {
    });
  }
 
+ removeCard(name) {
+   const { cardsArray } = this.state;
+   const list = cardsArray.filter(({ cardName }) => cardName !== name);
+   const thisIsTrunfo = list.some(({ cardTrunfo }) => cardTrunfo);
+   this.setState(({
+     cardsArray: list,
+     hasTrunfo: thisIsTrunfo,
+   }));
+ }
+
  render() {
    const {
      cardName,
@@ -153,6 +163,13 @@ class App extends React.Component {
                cardRare={ card.cardRare }
                cardTrunfo={ card.cardTrunfo }
              />
+             <button
+               data-testid="delete-button"
+               onClick={ () => this.removeCard(card.cardName) }
+               type="button"
+             >
+               Excluir
+             </button>
            </div>
          ))}
        </section>
