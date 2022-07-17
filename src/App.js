@@ -106,37 +106,58 @@ class App extends React.Component {
      cardRare,
      cardTrunfo,
      hasTrunfo,
+     cardsArray,
    } = this.state;
 
    return (
-     <>
-       <Form
-         onInputChange={ this.onInputChange }
-         cardName={ cardName }
-         cardDescription={ cardDescription }
-         cardAttr1={ cardAttr1 }
-         cardAttr2={ cardAttr2 }
-         cardAttr3={ cardAttr3 }
-         cardImage={ cardImage }
-         cardRare={ cardRare }
-         cardTrunfo={ cardTrunfo }
-         hasTrunfo={ hasTrunfo }
-         isSaveButtonDisabled={ this.isSaveButtonDisabled() }
-         onSaveButtonClick={ this.savingCard }
-       />
-       <Card
-         cardName={ cardName }
-         cardDescription={ cardDescription }
-         cardImage={ cardImage }
-         cardRare={ cardRare }
-         cardAttr1={ cardAttr1 }
-         cardAttr2={ cardAttr2 }
-         cardAttr3={ cardAttr3 }
-         cardTrunfo={ cardTrunfo }
-       />
-     </>
+     <div>
+       <section>
+         <Form
+           onInputChange={ this.onInputChange }
+           cardName={ cardName }
+           cardDescription={ cardDescription }
+           cardAttr1={ cardAttr1 }
+           cardAttr2={ cardAttr2 }
+           cardAttr3={ cardAttr3 }
+           cardImage={ cardImage }
+           cardRare={ cardRare }
+           cardTrunfo={ cardTrunfo }
+           hasTrunfo={ hasTrunfo }
+           isSaveButtonDisabled={ this.isSaveButtonDisabled() }
+           onSaveButtonClick={ this.savingCard }
+         />
+       </section>
+       <section>
+         <Card
+           cardName={ cardName }
+           cardDescription={ cardDescription }
+           cardImage={ cardImage }
+           cardRare={ cardRare }
+           cardAttr1={ cardAttr1 }
+           cardAttr2={ cardAttr2 }
+           cardAttr3={ cardAttr3 }
+           cardTrunfo={ cardTrunfo }
+         />
+       </section>
+       <section>
+         <h1>Lista de Cartas</h1>
+         { cardsArray.map((card) => (
+           <div key={ card.cardName }>
+             <Card
+               cardName={ card.cardName }
+               cardDescription={ card.cardDescription }
+               cardAttr1={ card.cardAttr1 }
+               cardAttr2={ card.cardAttr2 }
+               cardAttr3={ card.cardAttr3 }
+               cardImage={ card.cardImage }
+               cardRare={ card.cardRare }
+               cardTrunfo={ card.cardTrunfo }
+             />
+           </div>
+         ))}
+       </section>
+     </div>
    );
  }
-//  this.setState({ isSaveButtonDisabled: !checkedForm });
 }
 export default App;
