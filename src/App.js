@@ -13,9 +13,12 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
+      hasTrunfo: false,
+      cardsArray: [],
     };
+    this.savingCard = this.savingCard.bind(this);
   }
 
   // lindar alteraçao dos inputs
@@ -55,6 +58,43 @@ class App extends React.Component {
    return (emptyCard || maxAtt || attrValue);
  }
 
+ savingCard() {
+   const {
+     cardsArray,
+     cardName,
+     cardDescription,
+     cardAttr1,
+     cardAttr2,
+     cardAttr3,
+     cardImage,
+     cardRare,
+     cardTrunfo,
+     hasTrunfo,
+   } = this.state;
+   const deckCards = {
+     cardName,
+     cardDescription,
+     cardAttr1,
+     cardAttr2,
+     cardAttr3,
+     cardImage,
+     cardRare,
+     cardTrunfo,
+   };
+   this.setState({
+     cardsArray: [...cardsArray, deckCards],
+     cardName: '',
+     cardDescription: '',
+     cardAttr1: '0',
+     cardAttr2: '0',
+     cardAttr3: '0',
+     cardImage: '',
+     cardRare: 'normal',
+     cardTrunfo: false,
+     hasTrunfo: cardTrunfo || hasTrunfo,
+   });
+ }
+
  render() {
    const {
      cardName,
@@ -80,6 +120,7 @@ class App extends React.Component {
          cardRare={ cardRare }
          cardTrunfo={ cardTrunfo }
          isSaveButtonDisabled={ this.isSaveButtonDisabled() }
+         onSaveButtonClick={ this.savingCard }
        />
        <Card
          cardName={ cardName }
@@ -90,8 +131,6 @@ class App extends React.Component {
          cardAttr2={ cardAttr2 }
          cardAttr3={ cardAttr3 }
          cardTrunfo={ cardTrunfo }
-         // hasTrunfo={ hasTrunfo }
-         // onSaveButtonClick={ this.saveCard }
        />
      </>
    );
