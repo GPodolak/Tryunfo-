@@ -17,6 +17,8 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       cardsArray: [],
+      filterName: '',
+      rareFilter: 'todas',
     };
     this.savingCard = this.savingCard.bind(this);
   }
@@ -117,6 +119,8 @@ class App extends React.Component {
      cardTrunfo,
      hasTrunfo,
      cardsArray,
+     filterName,
+     rareFilter,
    } = this.state;
 
    return (
@@ -149,9 +153,39 @@ class App extends React.Component {
            cardTrunfo={ cardTrunfo }
          />
        </section>
+       <label htmlFor="name-filter">
+         <input
+           name="filterName"
+           type="text"
+           data-testid="name-filter"
+           onChange={ this.onInputChange }
+           value={ filterName }
+         />
+       </label>
+       <select
+         name="rareFilter"
+         data-testid="rare-filter"
+         onChange={ this.onInputChange }
+         value={ rareFilter }
+       >
+         <option value="todas">todas</option>
+         <option value="normal">normal</option>
+         <option value="raro">raro</option>
+         <option value="muito raro">muito raro</option>
+       </select>
        <section>
          <h1>Lista de Cartas</h1>
-         { cardsArray.map((card) => (
+         {cardsArray.filter((card) => {
+           if (filterName !== '' || rareFilter !== 'todas') {
+             if (filterName) {
+               return card.cardName.includes(filterName);
+             }
+             if (rareFilter) {
+               return card.cardRare === rareFilter;
+             }
+           }
+           return true;
+         }).map((card) => (
            <div key={ card.cardName }>
              <Card
                cardName={ card.cardName }
